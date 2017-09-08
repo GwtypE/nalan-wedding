@@ -1,0 +1,36 @@
+body,div,dl,dt,ul,li,h1,h2,h3,h4,h5,h6,input,form,a,p,textarea{
+    padding: 0;
+    margin: 0;
+    font-family: 微软雅黑 ;
+}
+ol,ul,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    display: block;
+}
+img{
+    border:none;
+    /*display: block;*/
+}
+.clearfix{
+    zoom:1;
+}
+.clearfix:after{
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    overflow: hidden;
+    height: 0;
+    font-size: 0;
+}
+.clearfix:before{
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    overflow: hidden;
+    height: 0;
+}
