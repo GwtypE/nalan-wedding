@@ -1,4 +1,5 @@
-//全局通用
+
+//全局类名
 body {
   font-size: 12px;
 }
@@ -25,11 +26,9 @@ body {
   color: #ffffff;
 }
 
-
-
-//
+//静态
 .banner {
-  background: url("../img/banner.jpg") no-repeat ;
+  background: url("../img/banner.jpg") no-repeat;
   //-webkit-background-size: auto 600px;
   //background-size: auto 600px;
   height: 413px;
@@ -38,27 +37,80 @@ body {
   //padding-top: 1px;
   overflow: hidden;
   position: relative;
+
   .banner-bottom {
     width: 960px;
     height: 102px;
     //margin: 0 auto;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     //opacity: 0.4;
     position: absolute;
     bottom: 0;
     left: 50%;
     margin-left: -480px;
   }
+  .banner-leftBtn{
+    width: 50px;
+    height: 102px;
+    font-size: 40px;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+
+    p{
+      height: 50px;
+      width: 30px;
+      position: absolute;
+      cursor: pointer;
+      top:50%;
+      margin-top: -25px;
+      left: 50%;
+      margin-left: -15px;
+      color: rgba(255,255,255,0.5);
+      font-weight: bold;
+    }
+  }
+  .banner-rightBtn{
+    width: 50px;
+    height: 102px;
+    font-size: 40px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    p{
+      height: 50px;
+      width: 30px;
+      position: absolute;
+      cursor: pointer;
+      top:50%;
+      margin-top: -25px;
+      left: 50%;
+      margin-left: -15px;
+      color: rgba(255,255,255,0.5);
+      font-weight: bold;
+    }
+  }
+  .banner-list-mask{
+    width: 860px;
+    height: 102px;
+    overflow: hidden;
+    position: relative;
+    left: 50px;
+    display: inline-block;
+  }
   .banner-list {
-    padding-left: 50px;
+    position: absolute;
+    height: 102px;
+
     li {
       padding-top: 13px;
       width: 222px;
       float: left;
-      div {
+      a {
+        width: 118px;
+        height: 74px;
         display: inline-block;
         float: left;
-        width: 118px;
         padding-left: 12px;
       }
       img {
@@ -87,7 +139,7 @@ body {
     width: 100%;
     height: 102px;
     margin: 311px auto;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     background-position: center 0;
   }
 }
@@ -273,7 +325,7 @@ body {
     width: 217px;
     float: left;
     margin-top: 2px;
-    img{
+    img {
       display: block;
       border: 3px solid #f2f2f1;
       margin-bottom: 2px;
@@ -291,15 +343,15 @@ body {
   }
 }
 
-.business{
+.business {
   float: left;
-  .divide{
+  .divide {
     float: left;
     width: 567px;
     margin-left: 28px;
     background: linear-gradient(to left, #f7f7f7, #a6a6a6, #f7f7f7);
   }
-  .paper{
+  .paper {
     height: 30px;
   }
 }
@@ -366,29 +418,31 @@ body {
   }
 }
 
-
-
 //尝试BEM命名
 //公共命名
-.topTitle{
+.topTitle {
   font-size: 16px;
   line-height: 35px;
   padding: 12px 0 0 28px;
   float: left;
 }
-.topTitle-big{
+
+.topTitle-big {
   font-size: 20px;
   color: #f9733d;
 }
-.topTitle-small{
+
+.topTitle-small {
   color: #f86e9e;
   font-size: 12px;
 }
+
 .divide {
   background: linear-gradient(to left, #f7f7f7, #a6a6a6, #f7f7f7);
   height: 1px;
 }
-.titleMore{
+
+.titleMore {
   width: 50px;
   height: 20px;
   float: right;
@@ -399,55 +453,65 @@ body {
 }
 
 //公共命名分割
-.showLove{
+.showLove {
   float: right;
-  background-image: url("../img/showLove__border.png") ;
-  background-repeat:no-repeat;
+  background-image: url("../img/showLove__border.png");
+  background-repeat: no-repeat;
   background-position: bottom left;
   width: 306px;
   height: 485px;
   margin-bottom: 10px;
 }
-.showLove__top{
+
+.showLove__top {
   width: 302px;
   height: 50px;
 }
-.showLove__topTitle{
+
+.showLove__topTitle {
   .topTitle;
 }
-.showLove__topTitle-big{
+
+.showLove__topTitleBig {
   .topTitle-big;
 }
-.showLove__topTitle-small{
+
+.showLove__topTitleSmall {
   .topTitle-small;
 }
-.showLove__divide{
+
+.showLove__divide {
   .divide;
   width: 250px;
   float: left;
   margin-left: 28px;
 }
-.showLove__list{
+
+.showLove__list {
   padding-top: 6px;
 }
-.showLove__item{
+
+.showLove__item {
   height: 95px;
   padding-top: 9px;
   padding-left: 6px;
 }
-.showLove__img{
+
+.showLove__img {
   width: 80px;
   height: 60px;
   border: 3px solid #f0f0f0;
   display: inline-block;
 }
-.showLove__rightText{
+
+.showLove__rightText {
   display: inline-block;
   vertical-align: top;
   width: 195px;
   padding-left: 8px;
 }
-.showLove__triangle{
+
+.showLove__triangle {
   width: 0;
   height: 0;
   border-left: 5px solid #f86e9e;
@@ -455,95 +519,99 @@ body {
   border-top: 5px solid transparent;
   display: inline-block;
 }
-.showLove__title{
+
+.showLove__title {
   font-size: 12px;
   color: #f86e9e;
   line-height: 20px;
 }
-.showLove__text{
+
+.showLove__text {
   line-height: 24px;
 }
-.showLove__bottomData{
+
+.showLove__bottomData {
   height: 25px;
   width: 100%;
   background-color: #f0f0f0;
   line-height: 25px;
 }
-.showLove__bottomMore{
+
+.showLove__bottomMore {
   float: right;
   color: #f86e9e;
   padding-right: 14px;
 }
 
-
-.showDress{
+.showDress {
   float: left;
   margin-top: 6px;
-    &__top{
-      width: 628px;
-    }
-  &__topTitle{
+  &__top {
+    width: 628px;
+  }
+  &__topTitle {
     .topTitle;
   }
-  &__topTitle-big{
+  &__topTitle-big {
     .topTitle-big;
   }
-  &__topTitle-small{
+  &__topTitle-small {
     .topTitle-small;
   }
-  &__titleMore{
+  &__titleMore {
     .titleMore;
     margin-top: 20px;
   }
-  &__divide{
+  &__divide {
     .divide;
     float: left;
     width: 567px;
     margin-left: 28px;
     background: linear-gradient(to left, #f7f7f7, #a6a6a6, #f7f7f7);
   }
-  &__list{
+  &__list {
     text-align: justify;
     width: 632px;
     letter-spacing: -3px;
     font-size: 0;
     padding-top: 20px;
   }
-  &__item{
+  &__item {
     display: inline-block;
     width: 160px;
-    letter-spacing:0;
+    letter-spacing: 0;
     font-size: 12px;
   }
-  &__itemImg{
+  &__itemImg {
     width: 137px;
     height: 191px;
     border: 1px solid #6a6a6a;
     margin: 0 auto;
   }
 }
-.actions{
+
+.actions {
   float: left;
   margin-top: 6px;
   width: 628px;
-  &__top{
+  &__top {
     width: 628px;
     display: inline-block;
   }
-  &__topTitle{
+  &__topTitle {
     .topTitle;
   }
-  &__topTitle-big{
+  &__topTitle-big {
     .topTitle-big;
   }
-  &__topTitle-small{
+  &__topTitle-small {
     .topTitle-small;
   }
-  &__titleMore{
+  &__titleMore {
     .titleMore;
     margin-top: 20px;
   }
-  &__divide{
+  &__divide {
     .divide;
     float: left;
     //display: block;
@@ -551,87 +619,89 @@ body {
     margin-left: 28px;
     background: linear-gradient(to left, #f7f7f7, #a6a6a6, #f7f7f7);
   }
-  &__topTitle-sec-big{
+  &__topTitle-sec-big {
     .topTitle-big;
     padding-left: 220px;
   }
-  &__main{
+  &__main {
     width: 332px;
     height: 227px;
     display: inline-block;
     padding-top: 15px;
   }
-  &__mainImg{
+  &__mainImg {
     width: 146px;
     height: 89px;
     display: inline-block;
     padding-left: 2px;
   }
-  &__mainText{
+  &__mainText {
     width: 156px;
     padding-left: 12px;
     display: inline-block;
     vertical-align: top;
   }
-  &__mainTitle{
+  &__mainTitle {
     color: #f86e9e;
     padding-left: 10px;
     line-height: 26px;
     font-size: 12px;
   }
-  &__mainDetail{
+  &__mainDetail {
     line-height: 20px;
   }
-  &__point{
+  &__point {
     display: inline-block;
     padding: 0 10px;
   }
-  &__itemsLink{
+  &__itemsLink {
     display: inline-block;
     line-height: 24px;
   }
-  &__separate{
+  &__separate {
     width: 1px;
     height: 225px;
     background: linear-gradient(#f7f7f7, #a6a6a6, #f7f7f7);
     display: inline-block;
   }
-  &__paper{
+  &__paper {
     display: inline-block;
   }
 }
-.vip{
+
+.vip {
   width: 280px;
   display: inline-block;
   vertical-align: top;
-  &__title{
+  &__title {
     font-size: 12px;
     color: #f86e9e;
     padding-left: 58px;
     padding-top: 12px;
     padding-bottom: 8px;
   }
-  &__list{
+  &__list {
     padding-left: 23px;
   }
-  &__items{
+  &__items {
     height: 30px;
     border-bottom: 1px dashed #bfbfbf;
   }
-  &__point{
+  &__point {
     padding-right: 10px;
     display: inline-block;
   }
-  &__itemsLink{
+  &__itemsLink {
     line-height: 30px;
     display: inline-block;
   }
 }
-.QRCode{
+
+.QRCode {
   float: right;
   width: 306px;
   height: 440px;
-  &__left{
+  &__left {
     width: 131px;
     height: 423px;
     background: url("../img/QRcodebg.jpg");
@@ -640,24 +710,24 @@ body {
     position: relative;
     display: inline-block;
   }
-  &__right{
+  &__right {
     width: 131px;
     height: 423px;
     background: url("../img/QRcodebg.jpg");
     position: relative;
     display: inline-block;
   }
-  &__wechat{
+  &__wechat {
     position: absolute;
     top: 108px;
     left: 11px;
   }
-  &__weibo{
+  &__weibo {
     position: absolute;
     top: 242px;
     left: 11px;
   }
-  &__customerLink{
+  &__customerLink {
     position: absolute;
     top: 374px;
     left: 11px;
@@ -665,21 +735,24 @@ body {
 }
 
 //footer common 公共类名
-.f-top{
+.f-top {
   font-size: 14px;
   color: #b8b8b8;
   height: 30px;
   background-color: #222222;
   line-height: 30px;
 }
-.f-big{
+
+.f-big {
   font-size: 18px;
   color: #f86e9e;
 }
-.f-EN{
+
+.f-EN {
   font-size: 12px;
 }
-.f-more{
+
+.f-more {
   float: right;
   font-size: 12px;
   color: #777777;
@@ -689,63 +762,62 @@ body {
   width: 60px;
 }
 
-
 //footer
-.footer{
+.footer {
   height: 386px;
   width: 100%;
   background-color: #333333;
 
-  &__container{
+  &__container {
     width: 960px;
     margin: 0 auto;
     font-size: 0;
     letter-spacing: -3px;
   }
-  &__content{
+  &__content {
     height: 272px;
   }
-  &__separate{
+  &__separate {
     display: inline-block;
   }
-  &__bottom{
+  &__bottom {
     height: 113px;
     width: 100%;
     background-color: #191919;
     border-top: 1px solid #3d3d3d;
     text-align: center;
     font-size: 12px;
-    letter-spacing:0;
+    letter-spacing: 0;
     color: #919191;
     line-height: 30px;
   }
-  &__address{
+  &__address {
     padding-top: 20px;
   }
 }
 
-.about{
+.about {
   width: 298px;
   padding-top: 15px;
   display: inline-block;
   vertical-align: top;
   letter-spacing: 0;
   font-size: 12px;
-  &__top{
+  &__top {
     .f-top;
     width: 254px;
     margin-left: 39px;
   }
-  &__big{
+  &__big {
     .f-big;
   }
-  &__EN{
+  &__EN {
     .f-EN;
   }
-  &__more{
+  &__more {
     .f-more;
   }
-  &__desc{
+  &__desc {
     color: #b8b8b8;
     padding-left: 25px;
     padding-top: 20px;
@@ -753,85 +825,129 @@ body {
   }
 }
 
-.ourTeam{
+.ourTeam {
   width: 304px;
   padding-top: 15px;
   display: inline-block;
   vertical-align: top;
   letter-spacing: 0;
-  &__top{
+  &__top {
     .f-top;
     width: 304px;
   }
-  &__big{
+  &__big {
     .f-big;
   }
-  &__EN{
+  &__EN {
     .f-EN;
   }
-  &__more{
+  &__more {
     .f-more;
   }
-  &__list{
+  &__list {
     width: 298px;
     padding-top: 13px;
   }
-  &__item{
+  &__item {
     display: inline-block;
     width: 99px;
     height: 95px;
     position: relative;
   }
-  &__img{
+  &__img {
     display: inline-block;
   }
-  &__name{
+  &__name {
     width: 99px;
     height: 13px;
     font-size: 10px;
-    letter-spacing:0;
+    letter-spacing: 0;
     position: absolute;
-    bottom:0;
+    bottom: 0;
     background-color: #000000;
-    opacity:0.6;
+    opacity: 0.6;
     color: #f86e9e;
     text-align: center;
     font-weight: bold;
   }
 }
 
-.quickEntry{
+.quickEntry {
   width: 240px;
   padding-top: 15px;
   display: inline-block;
   vertical-align: top;
   letter-spacing: 0;
-  &__top{
+  &__top {
     .f-top;
     width: 240px;
   }
-  &__big{
+  &__big {
     .f-big;
   }
-  &__EN{
+  &__EN {
     .f-EN;
   }
-  &__more{
+  &__more {
     .f-more;
   }
-  &__list{
+  &__list {
     padding-top: 32px;
     padding-left: 25px;
   }
-  &__item{
+  &__item {
   }
-  &__link{
+  &__link {
     color: #b8b8b8;
     font-size: 12px;
-    letter-spacing:0;
+    letter-spacing: 0;
     display: inline;
     line-height: 20px;
   }
 }
+
+
+//首页状态
+.banner-btn-active{
+  background-color: rgba(255,255,255,0.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -1,55 +1,92 @@
-.header{
+//多页面公共部分
+
+.header {
   width: 960px;
   margin: 0 auto;
   font-size: 12px;
-  .common-header-logo{
+}
+
+.common-header-logo {
+  float: left;
+  padding-top: 18px;
+}
+
+.common-about {
+  float: right;
+  padding-right: 15px;
+  padding-left: 300px;
+  line-height: 46px;
+  li {
     float: left;
-    padding-top: 18px;
   }
-  .common-about{
-    float: right;
-    padding-right: 15px;
-    padding-left: 300px;
-    line-height: 46px;
-    li{
-      float: left;
-      a{
-        display: inline-block;
-      }
-    }
-  }
-  .common-login{
-    float: right;
-    input{
-      width: 96px;
-    }
-    .common-user{
-      float: left;
-    }
-    .common-psw{
-      float: left;
-      padding-left: 10px;
-    }
-    #common-submit{
-      width: 48px;
-      height: 22px;
-      color: #f9733d;
-      font-size: 12px;
-      margin-left: 15px;
-    }
-  }
-  .common-header-nav{
-    li{
-      float: left;
-      color: #e1e3e6;
-      background: linear-gradient(#ffffff,#eef2f6);
-      a{
-        line-height: 47px;
-        display: inline-block;
-        padding:0 19px 0 19px;
-        color: #7a7a7a;
-        font-weight: bold;
-      }
-    }
+  a {
+    display: inline-block;
   }
 }
+
+.common-login {
+  float: right;
+}
+
+input {
+  width: 96px;
+}
+
+.common-user {
+  float: left;
+}
+
+.common-psw {
+  float: left;
+  padding-left: 10px;
+}
+
+#common-submit {
+  width: 48px;
+  height: 22px;
+  color: #f9733d;
+  font-size: 12px;
+  margin-left: 15px;
+}
+
+.common-header-nav {
+  li {
+    float: left;
+    color: #e1e3e6;
+    background: linear-gradient(#ffffff, #eef2f6);
+
+  }
+  a {
+    line-height: 47px;
+    display: inline-block;
+    padding: 0 19px 0 19px;
+    color: #7a7a7a;
+    font-weight: bold;
+  }
+}
+
+//状态
+.common-header-nav {
+  .active-tab {
+    color: #f86e9e;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

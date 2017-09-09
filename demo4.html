@@ -33,7 +33,7 @@
         <input type="submit" id="common-submit" value="登录">
     </form>
     <ul class="common-header-nav clearfix">
-        <li><a href="">首页</a>|</li>
+        <li><a class="active-tab" href="">首页</a>|</li>
         <li><a href="">关于纳兰</a>|</li>
         <li><a href="">纳兰活动</a>|</li>
         <li><a href="">纳兰写真</a>|</li>
@@ -48,28 +48,33 @@
 </div>
 <div class="banner">
     <div class="banner-bottom">
-        <ul class="banner-list">
-            <li>
+        <div id="carousel-leftBtn" class="banner-leftBtn"><p><</p></div>
+        <div class="banner-list-mask">
+        <ul id="carousel" class="banner-list">
+            <li class="carousel-part">
                 <img src="img/banner-list-1.jpg" alt="">
-                <div><h3>时尚漫步</h3>
-                    <p>理想生活，就是越简单，越幸福。</p></div>
+                <a href=""><h3>时尚漫步</h3>
+                    <p>理想生活，就是越简单，越幸福。</p>
+                </a>
             </li>
-            <li>
+            <li class="carousel-part">
                 <img src="img/banner-list-2.jpg" alt="">
-                <div><h3>流年私忆</h3>
-                    <p>终点是你我的幸福，我们独享的幸福。</p></div>
+                <a href=""><h3>流年私忆</h3>
+                    <p>终点是你我的幸福，我们独享的幸福。</p></a>
             </li>
-            <li>
+            <li class="carousel-part">
                 <img src="img/banner-list-3.jpg" alt="">
-                <div><h3>我们的婚礼时光</h3>
-                    <p>终点是你我的幸福，我们独享的幸福。</p></div>
+                <a href=""><h3>我们的婚礼时光</h3>
+                    <p>终点是你我的幸福，我们独享的幸福。</p></a>
             </li>
-            <li>
+            <li class="carousel-part">
                 <img src="img/banner-list-4.jpg" alt="">
-                <div><h3>公主的假期</h3>
-                    <p>终点是你我的幸福，我们独享的幸福。</p></div>
+                <a href=""><h3>公主的假期</h3>
+                    <p>终点是你我的幸福，我们独享的幸福。</p></a>
             </li>
         </ul>
+        </div>
+        <div id="carousel-rightBtn" class="banner-rightBtn"><p>></p></div>
     </div>
     <div class="banner-bottom-bg"></div>
 </div>
@@ -197,11 +202,12 @@
     </div>
 
     <!--尝试BEM命名-->
+
     <!--炫耀-->
     <div class="showLove ">
         <div class="showLove__top clearfix">
-            <h3 class="showLove__topTitle "><span class="showLove__topTitle-big">炫耀</span> 爱情&nbsp;&nbsp;&nbsp;<span
-                    class="showLove__topTitle-small">show Love</span></h3>
+            <h3 class="showLove__topTitle "><span class="showLove__topTitleBig">炫耀</span> 爱情&nbsp;&nbsp;&nbsp;<span
+                    class="showLove__topTitleSmall">show Love</span></h3>
             <div class="showLove__divide"></div>
         </div>
         <ul class="showLove__list">
