@@ -53,52 +53,99 @@ $(function () {
             roller('carousel',currentDire);
         }, 1000);
     });
-    //当第一张图在滚动带最左边而且滚动带在向左滚时，点击向右按钮，会出现空白，待修复
 
+<<<<<<< HEAD
     $('body').on('mouseover','img', function () {
         showPic($(this));
     })
         .on('mouseout','img', function () {
             removeImg();
         });
+=======
+>>>>>>> parent of 11a5e2f... 增加图片放大效果
 
 
 
+
+    //用于第一次执行时将滚动带子元素复制一份，目前想到去掉这个全局变量的方法就是在编写html的时候就直接把ul里的li复制一遍，而不用再用js生成。
+    var dbUlDone =false;
+    //滚动条滚动函数
+    //依次传入父元素id，子元素classname，及滚动方向l/r（不传默认r）
+    //虽然大部分时候应该都是用ul和li，不过还是写成兼容div样式，不然可以省去第二个参数。
+    //改写，如果是ul+li结构，可直接传入父元素id及滚动方向l/r(不传默认r)，如果是div结构，则需要传入父元素id、子元素className及滚动方向l/r（不传默认r）。
+    function roller(parentId,childrenCls,direction) {
+        var cParentId = '#'+parentId,
+            cChildrenCls = '.'+childrenCls;
+
+
+        var $children,
+            children_w,
+            $parent,
+            parent_w,
+            parent_l,
+            dire;
+
+        if (direction) {
+            dire = direction;
+        } else {
+            dire = 'r'
+        }
+
+        if(childrenCls=='r'||childrenCls=='l'){
+            dire = childrenCls;
+            $children = $(cParentId).find('li');
+        }else if(childrenCls==undefined){
+            $children = $(cParentId).find('li');
+        } else {
+            $children = $(cParentId).find(cChildrenCls);
+        }
+
+         children_w = parseFloat($children.width());
+         $parent = $(cParentId);
+
+        //检查Ul是否已复制，已复制则跳过。
+        if(!dbUlDone){
+            $parent.append($children.clone())
+                .css('width', children_w * $children.length * 2);
+            dbUlDone = true;
+        }
+
+
+         parent_w = parseFloat($parent.css('width'));
+         parent_l = parseInt($parent.css('left'));
+
+
+
+        if (parent_l <= -parent_w / 2) {
+            $parent.css('left', 0);
+            parent_l = parseFloat($parent.css('left'));
+        } else if (parent_l >= 0 && dire == 'r') {
+            $parent.css('left', -parent_w / 2);
+            parent_l = parseFloat($parent.css('left'));
+        }
+        if (dire == 'l') {
+            parent_l -= children_w;
+        } else if (dire == 'r') {
+            parent_l += children_w;
+        } else {
+            parent_l += children_w;
+            //或抛出错误
+            //throw error();
+        }
+        $parent.animate({'left': parent_l}, 'slow');
+    }
+    //$('<p>456</p>').insertBefore('.text');
     //function showPic(){
     //    $('<p>456</p>').insertBefore('.text');
     //}
-    ////$img.on('mouseenter', function () {
+    ////$('img').on('mouseenter', function () {
     ////    showPic();
     ////});
     //showPic();
 });
 
-var dbUlDone =false;
-//这个全局变量用于第一次执行时将滚动带子元素复制一份，目前想到去掉这个全局变量的方法就是在编写html的时候就直接把ul里的li复制一遍，而不用再用js生成。
-//或者每次调用这个函数之前先自行把li复制一遍（比较傻）
-//滚动条滚动函数
-//依次传入父元素id，子元素classname，及滚动方向l/r（不传默认r）
-//虽然大部分时候应该都是用ul和li，不过还是写成兼容div样式，不然可以省去第二个参数。
-//改写，如果是ul+li结构，可直接传入父元素id及滚动方向l/r(不传默认r)，如果是div结构，则需要传入父元素id、子元素className及滚动方向l/r（不传默认r）。
-function roller(parentId,childrenCls,direction) {
-    var cParentId = '#'+parentId,
-        cChildrenCls = '.'+childrenCls;
 
-    var $children,
-    //children_width↓
-        children_w,
-        $parent,
-        parent_w,
-    //parent_left↓
-        parent_l,
-        dire;
-
-    if (direction) {
-        dire = direction;
-    } else {
-        dire = 'r'
-    }
-
+<<<<<<< HEAD
     if(childrenCls=='r'||childrenCls=='l'){
         dire = childrenCls;
         $children = $(cParentId).find('li');
@@ -177,6 +224,8 @@ function removeImg(){
     $('#showImg').remove();
     $('#newTriangle').remove();
 }
+=======
+>>>>>>> parent of 11a5e2f... 增加图片放大效果
 //setInterval("fun()",1000); 这种调用报未定义，在全局我们已经说过了 。我们可以把带引号的参数理解为 可执行代码 。而setInterval现在把以引号包括的可执行代码进行处理。就像eval一样给予执行。
 //相当于把fun()放到 最外面的全局环境中执行了。而如果fun()函数是写在window.onload内的话，就会访问不到fun()函数本身从而报错。
 
