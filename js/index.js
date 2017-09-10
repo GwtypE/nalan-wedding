@@ -5,99 +5,134 @@ $(function () {
         $(this).find('a').addClass('active-tab');
     });
 
-    //banner底部滚动条
-
-    var $banner_item = $('.banner-list li');
-    var banner_item_w = parseFloat($banner_item.width());
-    var $banner_list = $('.banner-list');
-
-    $banner_list.append($banner_item.clone())
-        .css('width', banner_item_w * $banner_item.length * 2);
-
-    var banner_list_w = parseFloat($banner_list.css('width'));
-    var banner_list_l = parseInt($banner_list.css('left'));
-
+    //banner底部滚动带
+    //为了调试方便，定时器时间间隔设置得较短
     var timer = setInterval(function () {
-        Move();
+        roller('carousel');
     }, 1000);
 
     //保存当前滚动方向
     var currentDire = 'r';
 
     $('#carousel-leftBtn').click(function () {
-        //如果先执行一次Move函数（把下面的注释打开），在快速多次点击方向按钮之后滚动条会异常。而不先执行一次Move函数（把下面一行注释掉）则点击按钮后会停顿，定时器时间到了之后滚动条才会继续滚动
+        //如果先执行一次roller函数（把下面的注释打开），在快速多次点击方向按钮之后滚动条会异常。而不先执行一次roller函数（把下面一行注释掉）则点击按钮后会停顿，定时器时间到了之后滚动条才会继续滚动
         //正常使用应该不会出现快速多次点击一个方向的方向按钮，故而还是把注释打开
-        Move('l');
+        //先执行一次还是有bug，点击方向按钮时会出现越界和奇怪的运动的问题
+        //roller('l');
         clearInterval(timer);
         timer = setInterval(function () {
-            Move('l');
+            roller('carousel','l');
         }, 1000);
         currentDire = 'l';
     });
 
     $('#carousel-rightBtn').click(function () {
-        Move('r');
+        //roller('r');
         clearInterval(timer);
         timer = setInterval(function () {
-            Move('r');
+            roller('carousel','r');
         }, 1000);
         currentDire = 'r';
     });
 
-    //合并写成on'mousedown mouseup'之后滚动带也会有奇怪的bug。
-    $('#carousel-leftBtn #carousel-rightBtn').on('mousedown', function (event) {
+    $('#carousel-leftBtn,#carousel-rightBtn').on('mousedown mouseup', function (event) {
         event.preventDefault();
-        $(this).addClass('banner-btn-active');
-    }).on('mouseup', function () {
-        $(this).removeClass('banner-btn-active');
+        $(this).toggleClass('banner-btn-active');
     });
 
 
-    //function mouseleaveDire(curDire){
-    //    var cDire = curDire;
-    //
-    //    timer = setInterval(function (cDire) {
-    //        Move(cDire);
-    //    },1000);
-    //}
 
     //鼠标移入暂停，移出继续。
-    $banner_list.on('mouseenter', function () {
+    $('.banner-list').on('mouseenter', function () {
         clearInterval(timer);
     }).on('mouseleave', function () {
         //当前问题：鼠标移入移出之后没法保持当前滚动方向
         //timer = setInterval(function (currentDire) {
-        //已解决，Move外层嵌套函数不需要传入currentDire参数。
+        //已解决，roller外层嵌套函数不需要传入currentDire参数。
         timer = setInterval(function () {
-            Move(currentDire);
+            roller('carousel',currentDire);
         }, 1000);
     });
 
+
+
+
+
+    //用于第一次执行时将滚动带子元素复制一份，目前想到去掉这个全局变量的方法就是在编写html的时候就直接把ul里的li复制一遍，而不用再用js生成。
+    var dbUlDone =false;
     //滚动条滚动函数
-    function Move(direction) {
+    //依次传入父元素id，子元素classname，及滚动方向l/r（不传默认r）
+    //虽然大部分时候应该都是用ul和li，不过还是写成兼容div样式，不然可以省去第二个参数。
+    //改写，如果是ul+li结构，可直接传入父元素id及滚动方向l/r(不传默认r)，如果是div结构，则需要传入父元素id、子元素className及滚动方向l/r（不传默认r）。
+    function roller(parentId,childrenCls,direction) {
+        var cParentId = '#'+parentId,
+            cChildrenCls = '.'+childrenCls;
+
+
+        var $children,
+            children_w,
+            $parent,
+            parent_w,
+            parent_l,
+            dire;
+
         if (direction) {
-            var dire = direction;
+            dire = direction;
         } else {
             dire = 'r'
         }
 
-        if (banner_list_l <= -banner_list_w / 2) {
-            $banner_list.css('left', 0);
-            banner_list_l = parseFloat($banner_list.css('left'));
-        } else if (banner_list_l >= 0 && dire == 'r') {
-            $banner_list.css('left', -banner_list_w / 2);
-            banner_list_l = parseFloat($banner_list.css('left'));
+        if(childrenCls=='r'||childrenCls=='l'){
+            dire = childrenCls;
+            $children = $(cParentId).find('li');
+        }else if(childrenCls==undefined){
+            $children = $(cParentId).find('li');
+        } else {
+            $children = $(cParentId).find(cChildrenCls);
+        }
+
+         children_w = parseFloat($children.width());
+         $parent = $(cParentId);
+
+        //检查Ul是否已复制，已复制则跳过。
+        if(!dbUlDone){
+            $parent.append($children.clone())
+                .css('width', children_w * $children.length * 2);
+            dbUlDone = true;
+        }
+
+
+         parent_w = parseFloat($parent.css('width'));
+         parent_l = parseInt($parent.css('left'));
+
+
+
+        if (parent_l <= -parent_w / 2) {
+            $parent.css('left', 0);
+            parent_l = parseFloat($parent.css('left'));
+        } else if (parent_l >= 0 && dire == 'r') {
+            $parent.css('left', -parent_w / 2);
+            parent_l = parseFloat($parent.css('left'));
         }
         if (dire == 'l') {
-            banner_list_l -= banner_item_w
+            parent_l -= children_w;
         } else if (dire == 'r') {
-            banner_list_l += banner_item_w
+            parent_l += children_w;
         } else {
-            //抛出错误
+            parent_l += children_w;
+            //或抛出错误
             //throw error();
         }
-        $banner_list.animate({'left': banner_list_l}, 'slow');
+        $parent.animate({'left': parent_l}, 'slow');
     }
+    //$('<p>456</p>').insertBefore('.text');
+    //function showPic(){
+    //    $('<p>456</p>').insertBefore('.text');
+    //}
+    ////$('img').on('mouseenter', function () {
+    ////    showPic();
+    ////});
+    //showPic();
 });
 
 
