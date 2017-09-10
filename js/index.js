@@ -55,10 +55,10 @@ $(function () {
     });
     //当第一张图在滚动带最左边而且滚动带在向左滚时，点击向右按钮，会出现空白，待修复
 
-    $('body').on('mouseenter','img', function () {
+    $('body').on('mouseover','img', function () {
         showPic($(this));
     })
-        .on('mouseleave','img', function () {
+        .on('mouseout','img', function () {
             removeImg();
         });
 
@@ -155,22 +155,22 @@ function showPic($img){
         'width':parseInt(imgWidth *1.5),
         'height':parseInt(imgHeight *1.5),
         'left':parseInt($img.offset().left+imgWidth/2-imgWidth*1.5/2),
-        'top':parseInt($img.offset().top-imgHeight-imgHeight*1.5-10-16),
+        'top':parseInt($img.offset().top-imgHeight/2-imgHeight*1.5/2),
         'z-index':99,
         'border':'5px solid #e5e5e5'
     });
-    $('#newTriangle').css({
-        'position':'absolute',
-        'width': 0,
-        'height': 0,
-        'left':parseInt($img.offset().left+imgWidth/2-16/2),
-        'top':parseInt($img.offset().top-16),
-        'border-left': '16px solid transparent',
-        'border-top': '16px solid #e5e5e5',
-        'border-right': '16px solid transparent',
-        'display': 'inline-block',
-        'z-index':99
-    });
+    //$('#newTriangle').css({
+    //    'position':'absolute',
+    //    'width': 0,
+    //    'height': 0,
+    //    'left':parseInt($img.offset().left+imgWidth/2-16/2),
+    //    'top':parseInt($img.offset().top-16),
+    //    'border-left': '16px solid transparent',
+    //    'border-top': '16px solid #e5e5e5',
+    //    'border-right': '16px solid transparent',
+    //    'display': 'inline-block',
+    //    'z-index':99
+    //});
 }
 //
 function removeImg(){
